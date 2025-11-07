@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Locação de espaço – El Gatinho</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src="download.png" alt="Logo El Gatinho" style="height:60px;">
+<div class="name">El Gatinho</div>
+
+<header class="header">
+  <div class="nav">
+    <div class="brand"><div class="logo-slot">LOGO</div><div class="name">El Gatinho</div></div>
+    <nav class="nav-links">
+      <a href="pedido.html">Pedidos</a><a href="rodizio.html">Rodízios</a><a href="locação.html">Locação</a><a href="galeria.html">Galeria</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>Locação de espaço para eventos</h2>
+    <p class="kicker">Aniversários, corporativos, confraternizações — peça seu orçamento.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <img src="assets/img/eventos.jpg" alt="Salão principal">
+        <div class="content">
+          <h3>Salão Principal</h3>
+          <p>Até 100 pessoas, som ambiente e decoração aconchegante.</p>
+          <span class="tag">Festas</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/img/eventos.jpg" alt="Salão reservado">
+        <div class="content">
+          <h3>Salão Reservado</h3>
+          <p>Até 40 pessoas, privativo com projetor e Wi‑Fi.</p>
+          <span class="tag">Corporativo</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/img/eventos.jpg" alt="Espaço kids">
+        <div class="content">
+          <h3>Espaço Kids</h3>
+          <p>Área segura e lúdica para os pequenos.</p>
+          <span class="tag">Família</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form" style="margin-top:1.2rem">
+      <h3>Solicitar orçamento</h3>
+      <form id="form-locacao">
+        <div class="grid-2">
+          <input class="input" name="nome" placeholder="Seu nome" required>
+          <input class="input" name="telefone" placeholder="WhatsApp" required>
+        </div>
+        <div class="grid-2">
+          <input class="input" name="data" type="date" required>
+          <input class="input" name="pessoas" type="number" min="10" placeholder="Nº de convidados" required>
+        </div>
+        <textarea class="input" name="detalhes" rows="4" placeholder="Tipo de evento, necessidades, horários..."></textarea>
+        <button class="btn btn-primary" type="submit">Solicitar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">© El Gatinho</div></footer>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

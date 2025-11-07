@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rodízios – El Gatinho</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <img src="download.png" alt="Logo El Gatinho" style="height:60px;">
+<div class="name">El Gatinho</div>
+
+<header class="header">
+  <div class="nav">
+    <div class="brand"><div class="logo-slot">LOGO</div><div class="name">El Gatinho</div></div>
+    <nav class="nav-links">
+      <a href="pedido.html">Pedidos</a><a href="rodizio.html">Rodízios</a><a href="locação.html">Locação</a><a href="galeria.html">Galeria</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>Rodízio de Pizza</h2>
+    <p class="kicker">Opções salgadas, doces e acompanhamentos. Reservas online.</p>
+
+    <div class="card-grid">
+      <article class="card">
+        <img src="classico.png" alt="Clássico">
+        <div class="content">
+          <h3>Clássico</h3>
+          <p>Sabores tradicionais e pizzas doces.</p>
+          <p><span class="price">R$ 69,90</span> por pessoa</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="premium.png" alt="Premium">
+        <div class="content">
+          <h3>Premium</h3>
+          <p>Ingredientes nobres e sobremesas especiais.</p>
+          <p><span class="price">R$ 89,90</span> por pessoa</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="familia.png" alt="Família">
+        <div class="content">
+          <h3>Família</h3>
+          <p>Opções kids e massas integrais.</p>
+          <p><span class="price">R$ 74,90</span> por pessoa</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="form" style="margin-top:1.2rem">
+      <h3>Reservar mesa</h3>
+      <form id="form-rodizio">
+        <div class="grid-3">
+          <input class="input" name="nome" placeholder="Seu nome" required>
+          <input class="input" name="telefone" placeholder="WhatsApp" required>
+          <input class="input" name="data" type="date" required>
+        </div>
+        <div class="grid-3">
+          <select class="input select" name="plano" required>
+            <option>Clássico</option><option>Premium</option><option>Família</option>
+          </select>
+          <input class="input" name="pessoas" type="number" min="1" placeholder="Nº de pessoas" required>
+          <input class="input" name="horario" type="time" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Reservar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">© El Gatinho</div></footer>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

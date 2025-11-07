@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pedidos – El Gatinho</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="nav">
+    <div class="brand">
+      <img src="download.png" alt="Logo El Gatinho" style="height:60px;">
+      <div class="name">El Gatinho</div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="pedido.html">Pedidos</a>
+      <a href="rodizio.html">Rodízios</a>
+      <a href="locação.html">Locação</a>
+      <a href="galeria.html">Galeria</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container grid-2">
+    <!-- Formulário -->
+    <div class="form">
+      <h2>Monte sua pizza</h2>
+      <form id="form-pedido">
+        <label>Tamanho</label>
+        <select id="pizza-size" class="input select" required>
+          <option value="Média">Média</option>
+          <option value="Grande">Grande</option>
+          <option value="Gigante">Gigante</option>
+        </select>
+
+        <label>Sabor</label>
+        <select id="pizza-flavor" class="input select" required>
+          <option value="Margherita">Margherita</option>
+          <option value="Calabresa">Calabresa</option>
+          <option value="Frango com Catupiry">Frango com Catupiry</option>
+          <option value="Quatro Queijos">Quatro Queijos</option>
+          <option value="Portuguesa">Portuguesa</option>
+          <option value="Nutella com Morango (Doce)">Nutella com Morango (Doce)</option>
+        </select>
+
+        <label>Borda recheada</label>
+        <select id="pizza-border" class="input select">
+          <option value="Nenhuma">Nenhuma</option>
+          <option value="Catupiry">Catupiry (+R$6)</option>
+          <option value="Cheddar">Cheddar (+R$6)</option>
+          <option value="Chocolate">Chocolate (+R$8)</option>
+        </select>
+
+        <label>Observações</label>
+        <input id="pizza-notes" class="input" placeholder="Sem cebola, extra queijo..." />
+
+        <div style="display:flex; gap:.6rem">
+          <button type="button" class="btn btn-outline" onclick="addPizzaFromForm()">Adicionar ao carrinho</button>
+          <button type="submit" class="btn btn-primary">Finalizar pedido</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Carrinho -->
+    <div class="form">
+      <h2>Carrinho</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Item</th><th>Tamanho</th><th>Obs.</th><th>Preço</th><th></th></tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+      </table>
+      <h3>Total: <span class="price" id="cart-total">R$ 0,00</span></h3>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">© El Gatinho</div></footer>
+
+<script>
+// Carrinho funcional
+const cart = {
+  items: [],
+  add(item){ this.items.push(item); this.render(); },
+  remove(index){ this.items.splice(index,1); this.render(); },
+  total(){ return this.items.reduce((s,i)=> s + i.price, 0); },
+  render(){
+    const list = document.querySelector('#cart-items');
+    const total = document.querySelector('#cart-total');
+    list.innerHTML = this.items.map((i,idx)=>`
+      <tr>
+        <td>${i.name}</td>
+        <td>${i.size}</td>
+        <td>${i.notes || '-'}</td>
+        <td>R$ ${i.price.toFixed(2)}</td>
+        <td><button class="btn btn-outline" onclick="cart.remove(${idx})">Remover</button></td>
+      </tr>
+    `).join('');
+    total.textContent = `R$ ${this.total().toFixed(2)}`;
+  }
+};
+
+function addPizzaFromForm(){
+  const size = document.getElementById('pizza-size').value;
+  const flavor = document.getElementById('pizza-flavor').value;
+  const border = document.getElementById('pizza-border').value;
+  const notes = document.getElementById('pizza-notes').value;
+
+  let basePrice = 44.9;
+  if(size === 'Grande') basePrice = 54.9;
+  if(size === 'Gigante') basePrice = 64.9;
+
+  let extras = 0;
+  if(border === 'Catupiry' || border === 'Cheddar') extras = 6;
+  if(border === 'Chocolate') extras = 8;
+
+  const price = basePrice + extras;
+  cart.add({ name:`Pizza ${flavor}`, size, notes, price });
+}
+
+document.getElementById('form-pedido').addEventListener('submit', e=>{
+  e.preventDefault();
+  alert("Pedido finalizado! Total: " + document.getElementById('cart-total').textContent);
+  cart.items = [];
+  cart.render();
+});
+</script>
+</body>
+</html>
